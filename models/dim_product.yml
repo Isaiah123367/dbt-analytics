@@ -6,17 +6,17 @@ models:
     columns:
       - name: productkey
         description: The surrogate key of the product
-        tests:
+        data_tests:
           - not_null
           - unique
       - name: productid
         description: The business / source key of the product
-        tests:
+        data_tests:
           - not_null
           - unique
       - name: productname
         description: The name of the product
-        tests:
+        data_tests:
           - not_null
       - name: suppliercompanyname
         description: Company name of the supplier of the product (from Suppliers)
@@ -28,6 +28,7 @@ models:
         description: Packaging / quantity in one unit of the product
       - name: discontinued
         description: Y if the product has been discontinued, otherwise N
-        tests:
+        data_tests:
           - accepted_values:
-              values: ['Y', 'N']
+              arguments:
+                values: ['Y', 'N']

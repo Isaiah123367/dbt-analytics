@@ -8,7 +8,7 @@ sources:
       - name: DateDimension
         columns:
           - name: DateKey
-            tests:
+            data_tests:
               - unique
 
   - name: northwind
@@ -18,41 +18,42 @@ sources:
       - name: Customers
         columns:
           - name: CustomerId
-            tests:
+            data_tests:
               - unique
       - name: Products
         columns:
           - name: ProductId
-            tests:
+            data_tests:
               - unique
       - name: Suppliers
         columns:
           - name: SupplierId
-            tests:
+            data_tests:
               - unique
       - name: Categories
         columns:
           - name: CategoryId
-            tests:
+            data_tests:
               - unique
       - name: Employees
         columns:
           - name: EmployeeId
-            tests:
+            data_tests:
               - unique
       - name: Shippers
         columns:
           - name: ShipperID
-            tests:
+            data_tests:
               - unique
       - name: Orders
         columns:
           - name: OrderId
-            tests:
+            data_tests:
               - unique
       - name: Order_Details
-        tests:
+        data_tests:
           - dbt_utils.unique_combination_of_columns:
-              combination_of_columns:
-                - OrderId
-                - ProductId
+              arguments:
+                combination_of_columns:
+                  - OrderId
+                  - ProductId
