@@ -1,0 +1,59 @@
+version: 2
+
+sources:
+  - name: conformed
+    database: raw
+    schema: conformed
+    tables:
+      - name: DateDimension
+        columns:
+          - name: DateKey
+            data_tests:
+              - unique
+
+  - name: northwind
+    database: raw
+    schema: northwind
+    tables:
+      - name: Customers
+        columns:
+          - name: CustomerId
+            data_tests:
+              - unique
+      - name: Products
+        columns:
+          - name: ProductId
+            data_tests:
+              - unique
+      - name: Suppliers
+        columns:
+          - name: SupplierId
+            data_tests:
+              - unique
+      - name: Categories
+        columns:
+          - name: CategoryId
+            data_tests:
+              - unique
+      - name: Employees
+        columns:
+          - name: EmployeeId
+            data_tests:
+              - unique
+      - name: Shippers
+        columns:
+          - name: ShipperID
+            data_tests:
+              - unique
+      - name: Orders
+        columns:
+          - name: OrderId
+            data_tests:
+              - unique
+      - name: Order_Details
+        data_tests:
+          - dbt_utils.unique_combination_of_columns:
+              arguments:
+                combination_of_columns:
+                  - OrderId
+                  - ProductId
